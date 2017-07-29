@@ -1,6 +1,19 @@
 # spring-boot-mongodb
-This repository contains a Spring Boot example project for MongoDB.
+Add groovy script for dynamic version...create Template <<>File_Name> inside and
+In project..
+Add plugin in maven, to replace file name while build package…
 
-For a code review of this repo, see my related [blog post](https://springframework.guru/3402-2/).
+Then
+Mvn clean package docker:build
 
-You can learn more about my courses [here](http://courses.springframework.guru/courses/) on my site.
+Mvn clean package docker:build docker:push
+
+
+
+
+OR we can use maven docker spotify plugin for build and push docker image
+Mvn deploy
+
+Docker lInk was old feature to connect the containers
+**** now docker network
+
