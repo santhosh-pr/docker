@@ -1,14 +1,22 @@
-spr-mongo:
-  image: mongo
-  ports:
-    - "27017:27017"
-  volumes:
-    - "/Users/santhoshramachandran/workspsce/micr-services/docker/data/db:/data/db"
-sbm:
-  image: ms/spring-boot-mongodb
-  ports:  
-    - "8080:8080"
-  links:
-    - spr-mongo 
-  environment:
-    SPRING_DATA_MONGODB_URI: mongodb://spr-mongo/mydb      
+version: "3"
+services:
+  spr-mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/Users/santhoshramachandran/workspsce/micr-services/docker/data/db:/data/db"
+    networks:
+      - my_nw  
+  sbm:
+    image: ms/spring-boot-mongodb
+    ports:  
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://spr-mongo/mydb  
+    networks:
+      - my_nw         
+networks:
+  my_nw: 
+    driver: bridge #overlay for multi host 
+        
