@@ -1,0 +1,14 @@
+spr-mongo:
+  image: mongo
+  ports:
+    - "27017:27017"
+  volumes:
+    - "/Users/santhoshramachandran/workspsce/micr-services/docker/data/db:/data/db"
+sbm:
+  image: ms/spring-boot-mongodb
+  ports:  
+    - "8080:8080"
+  links:
+    - spr-mongo 
+  environment:
+    SPRING_DATA_MONGODB_URI: mongodb://spr-mongo/mydb      
