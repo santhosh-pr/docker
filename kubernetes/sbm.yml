@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sbm.com
+  labels:
+    app: sbm
+spec:
+      containers:
+      - name: container-sbm
+        image: santhoshpr4/mc
+        ports:
+        - containerPort: 8080
+      - name: container-mongo
+        image: mongo
+        ports:
+        - containerPort: 27017
+        

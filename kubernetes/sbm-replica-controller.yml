@@ -1,0 +1,24 @@
+apiVersion: v1
+
+kind: ReplicationController
+metadata:
+  name: sbm-rc
+spec:
+  replicas: 2
+  selector:
+    app: sbm
+  template:
+    metadata:  
+      labels:
+        app: sbm
+    spec:
+        containers:
+        - name: container-sbm
+          image: santhoshpr4/mc
+          ports:
+            - containerPort: 8080
+        - name: container-mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+        

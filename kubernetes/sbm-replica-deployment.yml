@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+
+kind: Deployment
+metadata:
+  name: sbm-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:  
+      labels:
+        app: sbm
+    spec:
+        containers:
+        - name: container-sbm
+          image: santhoshpr4/mc
+          ports:
+            - containerPort: 8080
+        - name: container-mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+        
