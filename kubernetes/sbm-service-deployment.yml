@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+
+kind: Deployment
+metadata:
+  name: sbm-service-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:  
+      labels:
+        app: sbm-service
+    spec:
+        containers:
+        - name: container-sbm-service
+          image: santhoshpr4/mc
+          ports:
+            - containerPort: 8080
+          env: 
+            - name: spring_data_mongodb_port
+              value: "27017"
+            - name: spring_data_mongodb_host
+              value: sbm-mongo-service  

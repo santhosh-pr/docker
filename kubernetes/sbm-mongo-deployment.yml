@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+
+kind: Deployment
+metadata:
+  name: sbm-mongo-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:  
+      labels:
+        app: sbm-mongo
+    spec:
+        containers:
+        - name: container-mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+        
